@@ -46,7 +46,9 @@ public class Runner {
     public static void main(String[] args) {
         new TextConsole(Level.FINE);
         final int concurrentThreads = Runtime.getRuntime().availableProcessors();
-        Console.traceln(Level.FINE, "exuection max " + concurrentThreads + " at the same time");
+        Console.traceln(Level.FINE, "execution max " + concurrentThreads + " at the same time");
+        Console.traceln(Level.FINE, "Current working directory: " + System.getProperty("user.dir"));
+        
         final ExecutorService threadPool = Executors.newFixedThreadPool(concurrentThreads);
         for (String arg : args) {
             File file = new File(arg);
@@ -60,10 +62,14 @@ public class Runner {
                     }
                 }
             }
+            else{
+                Console.traceln(Level.FINE, "Input " + arg + " is not a known file or directory");
+            }
         }
         threadPool.shutdown();
         try {
             threadPool.awaitTermination(Long.MAX_VALUE, TimeUnit.SECONDS);
+            Console.traceln(Level.FINE, "Threads completed");
         }
         catch (InterruptedException e) {
             e.printStackTrace();
@@ -109,6 +115,7 @@ public class Runner {
                 }
                 
                 threadPool.execute(experiment);
+                
             }
             catch (NoSuchMethodException e) {
                 Console.printerrln("Class \"" + config.getExecutionStrategy() +

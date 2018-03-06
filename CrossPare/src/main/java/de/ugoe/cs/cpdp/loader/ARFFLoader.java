@@ -18,8 +18,10 @@ import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
+import java.util.logging.Level;
 
 import de.ugoe.cs.cpdp.util.WekaUtils;
+import de.ugoe.cs.util.console.Console;
 import weka.core.Instances;
 
 /**
@@ -36,6 +38,7 @@ public class ARFFLoader implements SingleVersionLoader {
      */
     @Override
     public Instances load(File file, boolean binaryClass) {
+    	Console.traceln(Level.FINE, "Loading File:  " + file);
         Instances data;
         try(BufferedReader reader = new BufferedReader(new FileReader(file));) {
             data = new Instances(reader);
