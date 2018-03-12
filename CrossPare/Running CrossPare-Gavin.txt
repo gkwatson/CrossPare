@@ -1,0 +1,30 @@
+Running CrossPare
+---------------------------------
+
+-Clone from GitHub
+
+-Top level project file to run is: src/main/java/de/ugoe/cs/cpdp/Runner.java
+
+-Add command-line argument(s) to Runner
+	-each argument is name of an xml config file similar to the ones in testdata/configurations/
+	-argument can also be a folder of config files
+
+-install Java 8
+
+-Install and import project into Eclipse (or create new setup)
+
+-install mysql-server (can do without if removing <storage name="MySQLResultStorage" param="" /> line from config file)
+	-in terminal to set up sql database
+	 with default crosspare tables: 	mysql -u root -p
+						GRANT ALL PRIVILEGES ON *.* TO 'crosspare'@localhost IDENTIFIED BY 'crosspare';
+						CREATE DATABASE crosspare;
+						USE crosspare;
+						SOURCE sql/setup-db.sql
+
+-Many label files for the CrossPare provided config files are not present in this repository. Only the JURECZKO labels can be found in testdata/JURECZKO.
+ This folder contains one folder per project for all of the projects in this dataset. Each file in a project folder is the various versions of the project.
+
+-To easily make new config file for your data, copy a JURECZKO file, change elements loader:name, loader:datalocation, and resultspath:path based on the
+ extension of your files, the folder you dropped your projects in, and where you want the resulting csv file to be created.
+
+-Currently supported loaders are the "***FolderLoader" files located in src/main/java/de/ugoe/cs/cpdp/loader
