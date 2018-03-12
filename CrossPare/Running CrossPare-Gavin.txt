@@ -28,3 +28,5 @@ Running CrossPare
  extension of your files, the folder you dropped your projects in, and where you want the resulting csv file to be created.
 
 -Currently supported loaders are the "***FolderLoader" files located in src/main/java/de/ugoe/cs/cpdp/loader
+
+-Other properties like algorithms used are controlled by config file -- explore other configs and files in src/main/java/de/ugoe/cs/cpdp to get an idea.

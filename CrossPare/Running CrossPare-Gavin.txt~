@@ -11,6 +11,8 @@ Running CrossPare
 
 -install Java 8
 
+-Install and import project into Eclipse (or create new setup)
+
 -install mysql-server (can do without if removing <storage name="MySQLResultStorage" param="" /> line from config file)
 	-in terminal to set up sql database
 	 with default crosspare tables: 	mysql -u root -p
